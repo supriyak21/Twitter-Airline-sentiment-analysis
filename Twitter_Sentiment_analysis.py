@@ -1,12 +1,8 @@
 """
 Twitter Airline Sentiment Analysis
-Course: Natural Language Processing
-Task: Text Classification using Bag-of-Words and Multiple ML Classifiers
 """
 
-# ========================================
-# Import Required Libraries
-# ========================================
+
 import pandas as pd
 import nltk
 import re
@@ -39,9 +35,6 @@ from sklearn.metrics import precision_recall_fscore_support
 pd.set_option('display.max_colwidth', 1000)
 pd.set_option('display.max_rows', None)
 
-# ========================================
-# Question 2 - Text Classification Model
-# ========================================
 """
 Dataset: Twitter Airline Sentiment
 Source: https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment
@@ -51,17 +44,15 @@ Tasks:
 2. Compare performance metrics with multiple classifiers
 """
 
-# ========================================
+
 # Load and Explore Dataset
-# ========================================
 df = pd.read_csv("Tweets.csv")
 print("Dataset shape:", df.shape)
 print("\nFirst 5 rows:")
 print(df.head())
 
-# ========================================
+
 # Text Preprocessing Function
-# ========================================
 def preprocess(text):
     """
     Preprocess text for sentiment analysis
@@ -81,12 +72,10 @@ def preprocess(text):
 df['tokens'] = df['text'].apply(preprocess)
 df['features'] = df['tokens'].apply(lambda tokens: {word: True for word in tokens})
 
-# ========================================
+
 # NLTK Naive Bayes Classifier
-# ========================================
-print("\n" + "="*50)
 print("NLTK NAIVE BAYES SENTIMENT ANALYSIS")
-print("="*50)
+
 
 # Create dataset for NLTK
 nltk_dataset = [(df['features'][i], df['airline_sentiment'][i]) for i in range(len(df))]
@@ -105,9 +94,8 @@ print(f"NLTK SentimentAnalyzer Accuracy: {nltk_accuracy:.4f}")
 print("\nMost Informative Features:")
 nb_classifier.show_most_informative_features(50)
 
-print("\n" + "="*50)
+
 print("KEY OBSERVATIONS FROM INFORMATIVE FEATURES")
-print("="*50)
 print("""
 Positive sentiment indicators: 
 - Words like 'favorite', 'awesome', 'beautiful', 'excellent', 'amazing', 'thank', 'kudos' 
@@ -122,12 +110,10 @@ Neutral sentiment indicators:
 - Convey factual information rather than emotional content
 """)
 
-# ========================================
+
 # Prepare Data for Sklearn Classifiers
-# ========================================
-print("\n" + "="*50)
+
 print("SKLEARN CLASSIFIERS - BAG OF WORDS APPROACH")
-print("="*50)
 
 # Convert token lists back to strings for vectorization
 df['clean_text'] = df['tokens'].apply(lambda x: " ".join(x))
@@ -150,9 +136,8 @@ X_test_bow = vectorizer.transform(X_test)
 
 print(f"Feature matrix shape: {X_train_bow.shape}")
 
-# ========================================
+
 # Define All Classifiers
-# ========================================
 classifiers = {
     "Logistic Regression": LogisticRegression(max_iter=1000),
     "SGDClassifier L1": SGDClassifier(penalty="l1", max_iter=1000),
@@ -164,12 +149,10 @@ classifiers = {
     "ComplementNB": ComplementNB()
 }
 
-# ========================================
+
 # Train and Evaluate All Models
-# ========================================
-print("\n" + "="*50)
+
 print("TRAINING AND EVALUATING ALL MODELS")
-print("="*50)
 
 for name, clf in classifiers.items():
     print(f"\n{name}:")
@@ -196,12 +179,11 @@ for name, clf in classifiers.items():
     plt.title(f'Confusion Matrix - {name}')
     plt.show()
 
-# ========================================
+
 # Create Summary Table of All Models
-# ========================================
-print("\n" + "="*50)
+
 print("PERFORMANCE METRICS SUMMARY TABLE")
-print("="*50)
+
 
 results = []
 
@@ -222,12 +204,10 @@ results_df_sorted = results_df.sort_values(by='Accuracy', ascending=False)
 
 print(results_df_sorted.to_string(index=False))
 
-# ========================================
+
 # Business Insights
-# ========================================
-print("\n" + "="*50)
 print("BUSINESS INSIGHTS AND RECOMMENDATIONS")
-print("="*50)
+
 
 print("""
 After evaluating various classifiers for airline tweet sentiment classification:
@@ -253,7 +233,3 @@ After evaluating various classifiers for airline tweet sentiment classification:
    - Enhance customer experience and brand trustworthiness
    - Increase airline profitability through improved satisfaction
 """)
-
-print("\n" + "="*50)
-print("ANALYSIS COMPLETE")
-print("="*50)
