@@ -1,18 +1,15 @@
 Dataset shape: (14640, 15)
 
 First 5 rows:
-             tweet_id airline_sentiment  airline_sentiment_confidence  ...              tweet_created  tweet_location               user_timezone
-0  570306133677760513           neutral                        1.0000  ...  2015-02-24 11:35:52 -0800             NaN  Eastern Time (US & Canada)
-1  570301130888122368          positive                        0.3486  ...  2015-02-24 11:15:59 -0800             NaN  Pacific Time (US & Canada)
-2  570301083672813571           neutral                        0.6837  ...  2015-02-24 11:15:48 -0800       Lets Play  Central Time (US & Canada)
-3  570301031407624196          negative                        1.0000  ...  2015-02-24 11:15:36 -0800             NaN  Pacific Time (US & Canada)
-4  570300817074462722          negative                        1.0000  ...  2015-02-24 11:14:45 -0800             NaN  Pacific Time (US & Canada)
+             tweet_id airline_sentiment  ...  tweet_location               user_timezone
+0  570306133677760513           neutral  ...             NaN  Eastern Time (US & Canada)
+1  570301130888122368          positive  ...             NaN  Pacific Time (US & Canada)
+2  570301083672813571           neutral  ...       Lets Play  Central Time (US & Canada)
+3  570301031407624196          negative  ...             NaN  Pacific Time (US & Canada)
+4  570300817074462722          negative  ...             NaN  Pacific Time (US & Canada)
 
 [5 rows x 15 columns]
-
-==================================================
 NLTK NAIVE BAYES SENTIMENT ANALYSIS
-==================================================
 NLTK SentimentAnalyzer Accuracy: 0.7821
 
 Most Informative Features:
@@ -67,10 +64,7 @@ Most Informative Features
                       25 = True           negati : neutra =     11.5 : 1.0
                     half = True           negati : neutra =     11.5 : 1.0
                     haha = True           positi : negati =     11.4 : 1.0
-
-==================================================
 KEY OBSERVATIONS FROM INFORMATIVE FEATURES
-==================================================
 
 Positive sentiment indicators: 
 - Words like 'favorite', 'awesome', 'beautiful', 'excellent', 'amazing', 'thank', 'kudos' 
@@ -84,15 +78,9 @@ Neutral sentiment indicators:
 - Words like 'street', 'dragon', 'promo', 'policy'
 - Convey factual information rather than emotional content
 
-
-==================================================
 SKLEARN CLASSIFIERS - BAG OF WORDS APPROACH
-==================================================
 Feature matrix shape: (10248, 25000)
-
-==================================================
 TRAINING AND EVALUATING ALL MODELS
-==================================================
 
 Logistic Regression:
 ------------------------------
@@ -111,592 +99,35 @@ weighted avg       0.79      0.80      0.79      4392
 
 
 SGDClassifier L1:
-------------------------------
-Accuracy: 0.7750
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.87      0.86      2814
-           1       0.58      0.54      0.56       884
-           2       0.71      0.68      0.69       694
-
-    accuracy                           0.78      4392
-   macro avg       0.71      0.70      0.70      4392
-weighted avg       0.77      0.78      0.77      4392
-
-
-SGDClassifier L2:
 ------------------------------
 Accuracy: 0.7773
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.86      0.86      0.86      2814
-           1       0.57      0.58      0.57       884
-           2       0.73      0.69      0.71       694
-
-    accuracy                           0.78      4392
-   macro avg       0.72      0.71      0.71      4392
-weighted avg       0.78      0.78      0.78      4392
-
-
-Ridge Classifier:
-------------------------------
-Accuracy: 0.7502
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.83      0.84      0.84      2814
-           1       0.52      0.53      0.52       884
-           2       0.70      0.66      0.68       694
-
-    accuracy                           0.75      4392
-   macro avg       0.68      0.68      0.68      4392
-weighted avg       0.75      0.75      0.75      4392
-
-
-Perceptron:
-------------------------------
-Accuracy: 0.7593
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.84      0.86      0.85      2814
-           1       0.54      0.55      0.54       884
-           2       0.70      0.63      0.67       694
-
-    accuracy                           0.76      4392
-   macro avg       0.69      0.68      0.69      4392
-weighted avg       0.76      0.76      0.76      4392
-
-
-MultinomialNB:
-------------------------------
-Accuracy: 0.7789
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.79      0.96      0.86      2814
-           1       0.69      0.37      0.48       884
-           2       0.82      0.57      0.67       694
-
-    accuracy                           0.78      4392
-   macro avg       0.77      0.63      0.67      4392
-weighted avg       0.77      0.78      0.76      4392
-
-
-BernoulliNB:
-------------------------------
-Accuracy: 0.7265
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.72      0.98      0.83      2814
-           1       0.71      0.27      0.39       884
-           2       0.94      0.27      0.42       694
-
-    accuracy                           0.73      4392
-   macro avg       0.79      0.51      0.55      4392
-weighted avg       0.75      0.73      0.68      4392
-
-
-ComplementNB:
-------------------------------
-Accuracy: 0.7917
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.84      0.92      0.87      2814
-           1       0.66      0.45      0.54       884
-           2       0.70      0.73      0.71       694
-
-    accuracy                           0.79      4392
-   macro avg       0.73      0.70      0.71      4392
-weighted avg       0.78      0.79      0.78      4392
-
-
-==================================================
-PERFORMANCE METRICS SUMMARY TABLE
-==================================================
-         Classifier  Accuracy  Precision   Recall  F1-score
-Logistic Regression  0.797131   0.791240 0.797131  0.792878
-       ComplementNB  0.791667   0.781246 0.791667  0.781193
-   SGDClassifier L1  0.785291   0.782062 0.785291  0.783348
-      MultinomialNB  0.778916   0.771742 0.778916  0.756198
-   SGDClassifier L2  0.775046   0.775091 0.775046  0.775002
-         Perceptron  0.759335   0.758248 0.759335  0.758436
-   Ridge Classifier  0.750228   0.749974 0.750228  0.750010
-        BernoulliNB  0.726548   0.750585 0.726548  0.676036
-
-==================================================
-BUSINESS INSIGHTS AND RECOMMENDATIONS
-==================================================
-
-After evaluating various classifiers for airline tweet sentiment classification:
-
-1. TOP PERFORMERS:
-   - Logistic Regression: ~80% accuracy with balanced precision/recall
-   - ComplementNB: Nearly equal performance, excellent for imbalanced data
-   - Both suitable for production deployment
-
-2. CUSTOMER SERVICE OPTIMIZATION:
-   - Negative indicators ('terrible', 'hold', 'rebook') enable quick issue identification
-   - Positive indicators ('awesome', 'excellent', 'thank') highlight service strengths
-   - Real-time monitoring can reduce response time to complaints
-
-3. MODEL SELECTION:
-   - MultinomialNB & SGDClassifier (L1/L2): Good performance with word-count features
-   - Ridge Classifier & Perceptron: Robust but may miss subtle sentiments
-   - BernoulliNB: Lower performance, less suitable for detailed analysis
-
-4. IMPLEMENTATION STRATEGY:
-   - Deploy Logistic Regression or ComplementNB for accurate sentiment classification
-   - Enable proactive customer service responses
-   - Enhance customer experience and brand trustworthiness
-   - Increase airline profitability through improved satisfaction
-
-
-==================================================
-ANALYSIS COMPLETE
-==================================================
-(base) supriyakushwaha@SUPRIYAs-Laptop Assignment1 % /usr/local/bin/python3 /Users/supriyakushwaha/Desktop/MSDAE/04/NLP/Assignment1/Twitter_Sentiment_analysis
-.py
-[nltk_data] Downloading package punkt to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package wordnet to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!
-Dataset shape: (14640, 15)
-
-First 5 rows:
-             tweet_id airline_sentiment  airline_sentiment_confidence  ...              tweet_created  tweet_location               user_timezone
-0  570306133677760513           neutral                        1.0000  ...  2015-02-24 11:35:52 -0800             NaN  Eastern Time (US & Canada)
-1  570301130888122368          positive                        0.3486  ...  2015-02-24 11:15:59 -0800             NaN  Pacific Time (US & Canada)
-2  570301083672813571           neutral                        0.6837  ...  2015-02-24 11:15:48 -0800       Lets Play  Central Time (US & Canada)
-3  570301031407624196          negative                        1.0000  ...  2015-02-24 11:15:36 -0800             NaN  Pacific Time (US & Canada)
-4  570300817074462722          negative                        1.0000  ...  2015-02-24 11:14:45 -0800             NaN  Pacific Time (US & Canada)
-
-[5 rows x 15 columns]
-
-==================================================
-NLTK NAIVE BAYES SENTIMENT ANALYSIS
-==================================================
-NLTK SentimentAnalyzer Accuracy: 0.7821
-
-Most Informative Features:
-Most Informative Features
-                favorite = True           positi : negati =     31.8 : 1.0
-                  street = True           neutra : negati =     29.7 : 1.0
-             outstanding = True           positi : negati =     26.7 : 1.0
-                  battle = True           neutra : negati =     25.9 : 1.0
-                 awesome = True           positi : neutra =     24.8 : 1.0
-               beautiful = True           positi : negati =     24.1 : 1.0
-                flighted = True           negati : positi =     24.1 : 1.0
-                 amazing = True           positi : negati =     23.5 : 1.0
-                   kudos = True           positi : negati =     23.4 : 1.0
-               excellent = True           positi : negati =     22.3 : 1.0
-                   raise = True           positi : negati =     21.6 : 1.0
-                       👍 = True           positi : negati =     21.6 : 1.0
-                   thank = True           positi : negati =     20.8 : 1.0
-               fantastic = True           positi : negati =     20.6 : 1.0
-                discount = True           neutra : negati =     20.1 : 1.0
-                   shout = True           positi : negati =     19.1 : 1.0
-                jetblues = True           neutra : negati =     19.0 : 1.0
-                  dragon = True           neutra : negati =     18.2 : 1.0
-                      hr = True           negati : positi =     17.9 : 1.0
-                  loving = True           positi : negati =     16.5 : 1.0
-                   great = True           positi : neutra =     16.5 : 1.0
-                 excited = True           positi : negati =     15.8 : 1.0
-                terrible = True           negati : neutra =     15.7 : 1.0
-                    hold = True           negati : positi =     14.7 : 1.0
-               wonderful = True           positi : neutra =     14.6 : 1.0
-                   enjoy = True           positi : negati =     14.5 : 1.0
-                    mint = True           positi : negati =     14.5 : 1.0
-                 welcome = True           positi : negati =     14.5 : 1.0
-                 appease = True           neutra : negati =     14.4 : 1.0
-                    wall = True           neutra : negati =     14.4 : 1.0
-                    suck = True           negati : neutra =     14.3 : 1.0
-                fabulous = True           positi : negati =     14.0 : 1.0
-                  rebook = True           negati : positi =     13.9 : 1.0
-                    hour = True           negati : neutra =     13.8 : 1.0
-                  prompt = True           positi : negati =     13.0 : 1.0
-                  safely = True           positi : negati =     13.0 : 1.0
-                   sweet = True           positi : negati =     13.0 : 1.0
-                    rock = True           positi : negati =     12.8 : 1.0
-                  canada = True           neutra : negati =     12.4 : 1.0
-                   promo = True           neutra : negati =     12.4 : 1.0
-              republican = True           neutra : negati =     12.4 : 1.0
-               waterbury = True           neutra : negati =     12.4 : 1.0
-                  policy = True           neutra : positi =     12.3 : 1.0
-                   fleek = True           neutra : negati =     12.0 : 1.0
-      destinationdragons = True           neutra : negati =     12.0 : 1.0
-                horrible = True           negati : neutra =     12.0 : 1.0
-                    wont = True           negati : positi =     11.9 : 1.0
-                      25 = True           negati : neutra =     11.5 : 1.0
-                    half = True           negati : neutra =     11.5 : 1.0
-                    haha = True           positi : negati =     11.4 : 1.0
-
-==================================================
-KEY OBSERVATIONS FROM INFORMATIVE FEATURES
-==================================================
-
-Positive sentiment indicators: 
-- Words like 'favorite', 'awesome', 'beautiful', 'excellent', 'amazing', 'thank', 'kudos' 
-- Indicate customer satisfaction with airline service
-
-Negative sentiment indicators: 
-- Words like 'terrible', 'hold', 'rebook', 'suck' 
-- Point to pain points: delays, rebooking issues, customer service problems
-
-Neutral sentiment indicators: 
-- Words like 'street', 'dragon', 'promo', 'policy'
-- Convey factual information rather than emotional content
-
-
-==================================================
-SKLEARN CLASSIFIERS - BAG OF WORDS APPROACH
-==================================================
-Feature matrix shape: (10248, 25000)
-
-==================================================
-TRAINING AND EVALUATING ALL MODELS
-==================================================
-
-Logistic Regression:
-------------------------------
-Accuracy: 0.7971
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.90      0.87      2814
-           1       0.63      0.57      0.60       884
-           2       0.77      0.67      0.72       694
-
-    accuracy                           0.80      4392
-   macro avg       0.75      0.71      0.73      4392
-weighted avg       0.79      0.80      0.79      4392
-
-
-SGDClassifier L1:
-------------------------------
-Accuracy: 0.7782
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.87      0.86      2814
-           1       0.58      0.56      0.57       884
-           2       0.73      0.67      0.70       694
-
-    accuracy                           0.78      4392
-   macro avg       0.72      0.70      0.71      4392
-weighted avg       0.78      0.78      0.78      4392
-
-
-SGDClassifier L2:
-------------------------------
-Accuracy: 0.7741
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.86      0.86      2814
-           1       0.56      0.58      0.57       884
-           2       0.73      0.66      0.70       694
-
-    accuracy                           0.77      4392
-   macro avg       0.72      0.70      0.71      4392
-weighted avg       0.78      0.77      0.77      4392
-
-
-Ridge Classifier:
-------------------------------
-Accuracy: 0.7502
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.83      0.84      0.84      2814
-           1       0.52      0.53      0.52       884
-           2       0.70      0.66      0.68       694
-
-    accuracy                           0.75      4392
-   macro avg       0.68      0.68      0.68      4392
-weighted avg       0.75      0.75      0.75      4392
-
-
-Perceptron:
-------------------------------
-Accuracy: 0.7593
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.84      0.86      0.85      2814
-           1       0.54      0.55      0.54       884
-           2       0.70      0.63      0.67       694
-
-    accuracy                           0.76      4392
-   macro avg       0.69      0.68      0.69      4392
-weighted avg       0.76      0.76      0.76      4392
-
-
-MultinomialNB:
-------------------------------
-Accuracy: 0.7789
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.79      0.96      0.86      2814
-           1       0.69      0.37      0.48       884
-           2       0.82      0.57      0.67       694
-
-    accuracy                           0.78      4392
-   macro avg       0.77      0.63      0.67      4392
-weighted avg       0.77      0.78      0.76      4392
-
-
-BernoulliNB:
-------------------------------
-Accuracy: 0.7265
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.72      0.98      0.83      2814
-           1       0.71      0.27      0.39       884
-           2       0.94      0.27      0.42       694
-
-    accuracy                           0.73      4392
-   macro avg       0.79      0.51      0.55      4392
-weighted avg       0.75      0.73      0.68      4392
-
-
-ComplementNB:
-------------------------------
-Accuracy: 0.7917
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.84      0.92      0.87      2814
-           1       0.66      0.45      0.54       884
-           2       0.70      0.73      0.71       694
-
-    accuracy                           0.79      4392
-   macro avg       0.73      0.70      0.71      4392
-weighted avg       0.78      0.79      0.78      4392
-
-
-==================================================
-PERFORMANCE METRICS SUMMARY TABLE
-==================================================
-         Classifier  Accuracy  Precision   Recall  F1-score
-Logistic Regression  0.797131   0.791240 0.797131  0.792878
-       ComplementNB  0.791667   0.781246 0.791667  0.781193
-      MultinomialNB  0.778916   0.771742 0.778916  0.756198
-   SGDClassifier L2  0.777778   0.774980 0.777778  0.776260
-   SGDClassifier L1  0.777550   0.774377 0.777550  0.775792
-         Perceptron  0.759335   0.758248 0.759335  0.758436
-   Ridge Classifier  0.750228   0.749974 0.750228  0.750010
-        BernoulliNB  0.726548   0.750585 0.726548  0.676036
-
-==================================================
-BUSINESS INSIGHTS AND RECOMMENDATIONS
-==================================================
-
-After evaluating various classifiers for airline tweet sentiment classification:
-
-1. TOP PERFORMERS:
-   - Logistic Regression: ~80% accuracy with balanced precision/recall
-   - ComplementNB: Nearly equal performance, excellent for imbalanced data
-   - Both suitable for production deployment
-
-2. CUSTOMER SERVICE OPTIMIZATION:
-   - Negative indicators ('terrible', 'hold', 'rebook') enable quick issue identification
-   - Positive indicators ('awesome', 'excellent', 'thank') highlight service strengths
-   - Real-time monitoring can reduce response time to complaints
-
-3. MODEL SELECTION:
-   - MultinomialNB & SGDClassifier (L1/L2): Good performance with word-count features
-   - Ridge Classifier & Perceptron: Robust but may miss subtle sentiments
-   - BernoulliNB: Lower performance, less suitable for detailed analysis
-
-4. IMPLEMENTATION STRATEGY:
-   - Deploy Logistic Regression or ComplementNB for accurate sentiment classification
-   - Enable proactive customer service responses
-   - Enhance customer experience and brand trustworthiness
-   - Increase airline profitability through improved satisfaction
-
-
-==================================================
-ANALYSIS COMPLETE
-==================================================
-<rs/supriyakushwaha/Desktop/MSDAE/04/NLP/Assignment1/Twitter_Sentiment_analysis.py
-[nltk_data] Downloading package punkt to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package wordnet to
-[nltk_data]     /Users/supriyakushwaha/nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!
-Dataset shape: (14640, 15)
-
-First 5 rows:
-             tweet_id airline_sentiment  airline_sentiment_confidence  ...              tweet_created  tweet_location               user_timezone
-0  570306133677760513           neutral                        1.0000  ...  2015-02-24 11:35:52 -0800             NaN  Eastern Time (US & Canada)
-1  570301130888122368          positive                        0.3486  ...  2015-02-24 11:15:59 -0800             NaN  Pacific Time (US & Canada)
-2  570301083672813571           neutral                        0.6837  ...  2015-02-24 11:15:48 -0800       Lets Play  Central Time (US & Canada)
-3  570301031407624196          negative                        1.0000  ...  2015-02-24 11:15:36 -0800             NaN  Pacific Time (US & Canada)
-4  570300817074462722          negative                        1.0000  ...  2015-02-24 11:14:45 -0800             NaN  Pacific Time (US & Canada)
-
-[5 rows x 15 columns]
-
-==================================================
-NLTK NAIVE BAYES SENTIMENT ANALYSIS
-==================================================
-NLTK SentimentAnalyzer Accuracy: 0.7821
-
-Most Informative Features:
-Most Informative Features
-                favorite = True           positi : negati =     31.8 : 1.0
-                  street = True           neutra : negati =     29.7 : 1.0
-             outstanding = True           positi : negati =     26.7 : 1.0
-                  battle = True           neutra : negati =     25.9 : 1.0
-                 awesome = True           positi : neutra =     24.8 : 1.0
-               beautiful = True           positi : negati =     24.1 : 1.0
-                flighted = True           negati : positi =     24.1 : 1.0
-                 amazing = True           positi : negati =     23.5 : 1.0
-                   kudos = True           positi : negati =     23.4 : 1.0
-               excellent = True           positi : negati =     22.3 : 1.0
-                   raise = True           positi : negati =     21.6 : 1.0
-                       👍 = True           positi : negati =     21.6 : 1.0
-                   thank = True           positi : negati =     20.8 : 1.0
-               fantastic = True           positi : negati =     20.6 : 1.0
-                discount = True           neutra : negati =     20.1 : 1.0
-                   shout = True           positi : negati =     19.1 : 1.0
-                jetblues = True           neutra : negati =     19.0 : 1.0
-                  dragon = True           neutra : negati =     18.2 : 1.0
-                      hr = True           negati : positi =     17.9 : 1.0
-                  loving = True           positi : negati =     16.5 : 1.0
-                   great = True           positi : neutra =     16.5 : 1.0
-                 excited = True           positi : negati =     15.8 : 1.0
-                terrible = True           negati : neutra =     15.7 : 1.0
-                    hold = True           negati : positi =     14.7 : 1.0
-               wonderful = True           positi : neutra =     14.6 : 1.0
-                   enjoy = True           positi : negati =     14.5 : 1.0
-                    mint = True           positi : negati =     14.5 : 1.0
-                 welcome = True           positi : negati =     14.5 : 1.0
-                 appease = True           neutra : negati =     14.4 : 1.0
-                    wall = True           neutra : negati =     14.4 : 1.0
-                    suck = True           negati : neutra =     14.3 : 1.0
-                fabulous = True           positi : negati =     14.0 : 1.0
-                  rebook = True           negati : positi =     13.9 : 1.0
-                    hour = True           negati : neutra =     13.8 : 1.0
-                  prompt = True           positi : negati =     13.0 : 1.0
-                  safely = True           positi : negati =     13.0 : 1.0
-                   sweet = True           positi : negati =     13.0 : 1.0
-                    rock = True           positi : negati =     12.8 : 1.0
-                  canada = True           neutra : negati =     12.4 : 1.0
-                   promo = True           neutra : negati =     12.4 : 1.0
-              republican = True           neutra : negati =     12.4 : 1.0
-               waterbury = True           neutra : negati =     12.4 : 1.0
-                  policy = True           neutra : positi =     12.3 : 1.0
-                   fleek = True           neutra : negati =     12.0 : 1.0
-      destinationdragons = True           neutra : negati =     12.0 : 1.0
-                horrible = True           negati : neutra =     12.0 : 1.0
-                    wont = True           negati : positi =     11.9 : 1.0
-                      25 = True           negati : neutra =     11.5 : 1.0
-                    half = True           negati : neutra =     11.5 : 1.0
-                    haha = True           positi : negati =     11.4 : 1.0
-
-==================================================
-KEY OBSERVATIONS FROM INFORMATIVE FEATURES
-==================================================
-
-Positive sentiment indicators: 
-- Words like 'favorite', 'awesome', 'beautiful', 'excellent', 'amazing', 'thank', 'kudos' 
-- Indicate customer satisfaction with airline service
-
-Negative sentiment indicators: 
-- Words like 'terrible', 'hold', 'rebook', 'suck' 
-- Point to pain points: delays, rebooking issues, customer service problems
-
-Neutral sentiment indicators: 
-- Words like 'street', 'dragon', 'promo', 'policy'
-- Convey factual information rather than emotional content
-
-
-==================================================
-SKLEARN CLASSIFIERS - BAG OF WORDS APPROACH
-==================================================
-Feature matrix shape: (10248, 25000)
-
-==================================================
-TRAINING AND EVALUATING ALL MODELS
-==================================================
-
-Logistic Regression:
-------------------------------
-Accuracy: 0.7971
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.90      0.87      2814
-           1       0.63      0.57      0.60       884
-           2       0.77      0.67      0.72       694
-
-    accuracy                           0.80      4392
-   macro avg       0.75      0.71      0.73      4392
-weighted avg       0.79      0.80      0.79      4392
-
-
-SGDClassifier L1:
-------------------------------
-Accuracy: 0.7819
-
-Classification Report:
-              precision    recall  f1-score   support
-
            0       0.85      0.88      0.86      2814
-           1       0.58      0.57      0.58       884
-           2       0.73      0.67      0.70       694
+           1       0.58      0.54      0.56       884
+           2       0.72      0.68      0.70       694
 
     accuracy                           0.78      4392
-   macro avg       0.72      0.71      0.71      4392
-weighted avg       0.78      0.78      0.78      4392
+   macro avg       0.72      0.70      0.71      4392
+weighted avg       0.77      0.78      0.77      4392
 
 
 SGDClassifier L2:
 ------------------------------
-Accuracy: 0.7766
+Accuracy: 0.7798
 
 Classification Report:
               precision    recall  f1-score   support
 
            0       0.85      0.87      0.86      2814
-           1       0.57      0.56      0.56       884
-           2       0.72      0.69      0.70       694
+           1       0.58      0.57      0.57       884
+           2       0.74      0.68      0.71       694
 
     accuracy                           0.78      4392
-   macro avg       0.71      0.70      0.71      4392
-weighted avg       0.77      0.78      0.78      4392
+   macro avg       0.72      0.71      0.71      4392
+weighted avg       0.78      0.78      0.78      4392
 
 
 Ridge Classifier:
@@ -778,23 +209,17 @@ Classification Report:
    macro avg       0.73      0.70      0.71      4392
 weighted avg       0.78      0.79      0.78      4392
 
-
-==================================================
 PERFORMANCE METRICS SUMMARY TABLE
-==================================================
          Classifier  Accuracy  Precision   Recall  F1-score
 Logistic Regression  0.797131   0.791240 0.797131  0.792878
        ComplementNB  0.791667   0.781246 0.791667  0.781193
-   SGDClassifier L1  0.783470   0.780621 0.783470  0.781806
       MultinomialNB  0.778916   0.771742 0.778916  0.756198
-   SGDClassifier L2  0.775501   0.774871 0.775501  0.775179
+   SGDClassifier L2  0.772996   0.772724 0.772996  0.772755
+   SGDClassifier L1  0.771175   0.766851 0.771175  0.768508
          Perceptron  0.759335   0.758248 0.759335  0.758436
    Ridge Classifier  0.750228   0.749974 0.750228  0.750010
         BernoulliNB  0.726548   0.750585 0.726548  0.676036
-
-==================================================
 BUSINESS INSIGHTS AND RECOMMENDATIONS
-==================================================
 
 After evaluating various classifiers for airline tweet sentiment classification:
 
@@ -819,8 +244,4 @@ After evaluating various classifiers for airline tweet sentiment classification:
    - Enhance customer experience and brand trustworthiness
    - Increase airline profitability through improved satisfaction
 
-
-==================================================
-ANALYSIS COMPLETE
-==================================================
 (base) supriyakushwaha@SUPRIYAs-Laptop Assignment1 % 
